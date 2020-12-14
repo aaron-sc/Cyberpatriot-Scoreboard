@@ -4,7 +4,7 @@ from flask_cors import CORS
 from bs4 import BeautifulSoup
 
 # Imput team nums to monitor
-teamnums = ["13-0562", "13-1243", "13-3301"]
+teamnums = ["13-0562", "13-1243", "13-3301", "13-4790"]
 
 app = Flask(__name__)
 CORS(app)
@@ -18,7 +18,7 @@ def get_team_scores(teamnums):
 		div = soup.findAll("table", {"class": "CSSTableGenerator"})[0]
 		rows = div.findAll('tr')[1]
 		listofdata = []
-		for i, row in enumerate(rows):
+		for row in rows:
 			listofdata.append(row.text)
 		data[listofdata[0]] = listofdata[1:]
 	return data
