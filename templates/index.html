@@ -2,23 +2,36 @@
 <html>
   <head>
 	  <title>CyberPatriot CCS Scoreboard</title>
+	  <!-- Get the CSS file that was take from the cyberpatriot website -->
 	  <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}"/>
+	  <!-- To change how often the page refreshes, change the content attribute of the meta tag below (in seconds) -->
 	  <meta http-equiv="refresh" content="60">
   </head>
 
   <body>
     <h1>Cyberpatriot Scoreboard</h1>
 	<table class="CSSTableGenerator" cellspacing="0" cellpadding="0">
-	<tr><td>Team<br>Number</td><td>Location/<br>Category</td><td>Division</td><td>Tier</td><td>Scored<br>Images</td><td>Play Time<br>hh:mm:ss</td><td>Score Time<br>hh:mm:ss</td><td>**</td><td>CCS<br>Score</td></tr>
+	<tr>
+		<td>Team<br>Number</td>
+		<td>Location/<br>Category</td>
+		<td>Division</td>
+		<td>Tier</td>
+		<td>Scored<br>Images</td>
+		<td>Play Time<br>hh:mm:ss</td>
+		<td>Score Time<br>hh:mm:ss</td>
+		<td>**</td>
+		<td>CCS<br>Score</td>
+	</tr>
 
-		{% for key, value in result.items() %}
-		<tr>
-			<td>{{ key }}</td>
-				{% for item in value %}
-					<td>{{ item }} </td>
-				{% endfor %}
-		</tr>
-		{% endfor %}
+	<!-- Begin dynamic generation of rows -->
+	{% for key, value in result.items() %}
+	<tr>
+		<td>{{ key }}</td>
+			{% for item in value %}
+				<td>{{ item }} </td>
+			{% endfor %}
+	</tr>
+	{% endfor %}
 		
   </body>
 
